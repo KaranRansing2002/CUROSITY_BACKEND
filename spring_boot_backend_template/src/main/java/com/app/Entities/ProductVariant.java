@@ -37,7 +37,7 @@ public class ProductVariant {
 	
 	@ManyToOne
 	@JoinColumn(name="uid")
-	private User user;
+	private Users user;
 	
 	private int rating;
 	

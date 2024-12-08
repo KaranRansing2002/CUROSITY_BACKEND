@@ -30,7 +30,7 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long aid;
-	@Column(name = "current_address" ,length = 50 , nullable = false)
+	@Column(name = "current_address" ,length = 150 , nullable = false)
 	private String currentAddress;
 	@Column(length = 20 , nullable = false)
 	private String city;
@@ -44,5 +44,5 @@ public class Address {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "uid")
 	@JsonBackReference
-	private User user;
+	private Users user;
 }

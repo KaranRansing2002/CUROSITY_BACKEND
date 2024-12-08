@@ -17,7 +17,7 @@ import com.app.Dao.WishListDao;
 import com.app.Entities.Address;
 import com.app.Entities.Product;
 import com.app.Entities.ProductVariant;
-import com.app.Entities.User;
+import com.app.Entities.Users;
 import com.app.Entities.WishList;
 import com.app.customException.ResourceNotFoundException;
 import com.app.dto.UserRegisterDTO;
@@ -48,14 +48,14 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public String register(UserRegisterDTO user) {
- 		User newUser = mapper.map(user,User.class); 
+ 		Users newUser = mapper.map(user,Users.class); 
 		dao.save(newUser);
 		return "registered successfully!";
 	}
 
 	@Override
 	public UserResponseDto login(UserLoginDTO u) {
-		User user = dao.findByEmail(u.getEmail()).orElseThrow(()->new RuntimeException("user not found"));
+		Users user = dao.findByEmail(u.getEmail()).orElseThrow(()->new RuntimeException("user not found"));
 		if(user.getPassword().equals(u.getPassword())) {
 			UserResponseDto resultUser = mapper.map(user,UserResponseDto.class);
 			return resultUser;
@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService{
 	public ApiResponse updateUserDetails(UserResponseDto user) {
 		// TODO Auto-generated method stub
 		Long uid = user.getUid();
-		User currentUser = dao.findById(uid).orElseThrow(()-> new ResourceNotFoundException("User Not FOund"));
+		Users currentUser = dao.findById(uid).orElseThrow(()-> new ResourceNotFoundException("User Not FOund"));
 		currentUser.setDOB(user.getDOB());
 		currentUser.setEmail(user.getEmail());
 		currentUser.setFirstName(user.getFirstName());

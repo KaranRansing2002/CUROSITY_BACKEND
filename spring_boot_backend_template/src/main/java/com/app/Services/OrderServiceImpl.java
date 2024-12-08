@@ -24,7 +24,7 @@ import com.app.Entities.Address;
 import com.app.Entities.Orders;
 import com.app.Entities.Product;
 import com.app.Entities.ProductVariant;
-import com.app.Entities.User;
+import com.app.Entities.Users;
 import com.app.customException.ResourceNotFoundException;
 import com.app.dto.ApiResponse;
 import com.app.dto.OrderResponseDto;
@@ -59,7 +59,7 @@ public class OrderServiceImpl implements OrdersService {
 				.orElseThrow(() -> new ResourceNotFoundException("Product Not Found!"));
 		Address address = addressDao.findById(order.getAddressId())
 				.orElseThrow(() -> new ResourceNotFoundException("Address Not Exist!"));
-		User user = userDao.findById(order.getUserId())
+		Users user = userDao.findById(order.getUserId())
 				.orElseThrow(() -> new ResourceNotFoundException("User Dosn't Exist!"));
 		
 		//Mapping Orders Dto to Orders Class

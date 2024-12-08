@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.app.Entities.User;
+import com.app.Entities.Users;
 
-public interface UserDao extends JpaRepository<User, Long> {
-	public Optional<User> findByEmail(String email); 
+public interface UserDao extends JpaRepository<Users, Long> {
+	public Optional<Users> findByEmail(String email); 
 	
 }

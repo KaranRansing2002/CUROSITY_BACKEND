@@ -10,7 +10,7 @@ import com.app.Dao.UserDao;
 import com.app.Entities.Filter;
 import com.app.Entities.Product;
 import com.app.Entities.ProductVariant;
-import com.app.Entities.User;
+import com.app.Entities.Users;
 import com.app.customException.ResourceNotFoundException;
 import com.app.dto.ApiResponse;
 import com.app.dto.ProdFilterReqDTO;
@@ -76,7 +76,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public String addProduct(ProductDTO prods) {
         Product newProduct = prod.save(prods.getProduct());
-        User currentUser = userDao.findById(prods.getUid())
+        Users currentUser = userDao.findById(prods.getUid())
         		.orElseThrow(() -> new ResourceNotFoundException("User dosn't exist"));
         if (prods.getVariants() != null && !prods.getVariants().isEmpty()) {
             List<ProductVariant> productVariants = prods.getVariants().stream().map(variantDTO -> {

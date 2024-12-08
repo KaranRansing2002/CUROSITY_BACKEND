@@ -48,5 +48,5 @@ public class Orders {
    private ProductVariant product;
    @OneToOne
    @JoinColumn(name="uid",nullable = false)
-   private User user; 
+   private Users user; 
 }

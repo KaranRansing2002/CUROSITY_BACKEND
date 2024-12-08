@@ -19,7 +19,7 @@ public class AddressDTO {
    private Long aid;
    
 //   @NotNull(message = "Current address cannot be null")
-//   @Size(min = 1, max = 500, message = "Current address must be between 1 and 50 characters")
+   @Size(min = 1, max = 50, message = "Current address must be between 1 and 50 characters")
    private String currentAddress;
    
 //   @NotNull(message = "City cannot be null")
